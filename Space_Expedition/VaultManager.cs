@@ -52,7 +52,7 @@ namespace Space_Expedition
                         break;
 
                     default:
-                        Console.WriteLine("Invalid Selection.");
+                        Console.WriteLine("Invalid Selection. Select between 1 - 3");
                         break;
                 }
             }
@@ -215,10 +215,16 @@ namespace Space_Expedition
             Console.Write("Enter artifact file name: ");
             string fileName = Console.ReadLine().Trim();
 
+            if (!File.Exists(fileName))
+            {
+                Console.WriteLine("Artifact file does not exist.");
+                return;
+            }
+
             try
             {
                 int tempCount;
-                Artifact[] temp = LoadVault(fileName, out tempCount);
+                Artifact[] temp = LoadVault(fileName, out tempCount);   
                 Artifact newArtifact = temp[0];
 
                 if (BinarySearch(vault, count, newArtifact.DecodedName) == -1)
@@ -249,16 +255,24 @@ namespace Space_Expedition
 
         static void SaveVault(string filePath,  Artifact[] artifacts, int count)
         {
-            string[] lines = new string[count];
-            for(int i = 0; i < count; i++)
+            try
             {
-                lines[i] = artifacts[i].EncodedName + ", " +
-                    artifacts[i].Planet + ", " +
-                    artifacts[i].DiscoveryDate + ", " +
-                    artifacts[i].StorageLocation + ", " +
-                    artifacts[i].Description;
+                string[] lines = new string[count];
+                for(int i = 0; i < count; i++)
+                {
+                    lines[i] = artifacts[i].EncodedName + ", " +
+                        artifacts[i].Planet + ", " +
+                        artifacts[i].DiscoveryDate + ", " +
+                        artifacts[i].StorageLocation + ", " +
+                        artifacts[i].Description;
+                }
+                File.WriteAllLines(filePath, lines);
             }
-            File.WriteAllLines(filePath, lines);
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
         }        
 
     }
