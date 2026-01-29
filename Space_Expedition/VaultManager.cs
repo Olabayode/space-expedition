@@ -60,25 +60,52 @@ namespace Space_Expedition
         static Artifact[] LoadVault(string filePath, out int count)
         {
             count = 0;
-            string[] lines = File.ReadAllLines(filePath);
-            Artifact[] artifacts = new Artifact[lines.Length];
-
-            for (int i = 0; i < lines.Length; i++)
+            try
             {
-                string[] fields = lines[i].Split(',');
+                if (!File.Exists(filePath))
+                {
+                    Console.WriteLine($"File not found: {filePath}");
+                    return new Artifact[0];
+                }
+                    string[] lines = File.ReadAllLines(filePath);
+                    Artifact[] artifacts = new Artifact[lines.Length];
+                    for (int i = 0; i < lines.Length; i++)
+                    {
+                        string[] fields = lines[i].Split(',');
 
-                Artifact artifact = new Artifact();
-                artifact.EncodedName = fields[0].Trim();
-                artifact.DecodedName = DecodeName(artifact.EncodedName);
-                artifact.Planet = fields[1].Trim();
-                artifact.DiscoveryDate = fields[2].Trim();
-                artifact.StorageLocation = fields[3].Trim();
-                artifact.Description = fields[4].Trim();
+                        if (fields.Length < 5)
+                        {
+                            Console.WriteLine($"Invalid data format in line {i + 1}");
+                            continue;
+                        }
 
-                artifacts[count++] = artifact;
-            }
+                        Artifact artifact = new Artifact();
+                        artifact.EncodedName = fields[0].Trim();
+                        artifact.DecodedName = DecodeName(artifact.EncodedName);
+                        artifact.Planet = fields[1].Trim();
+                        artifact.DiscoveryDate = fields[2].Trim();
+                        artifact.StorageLocation = fields[3].Trim();
+                        artifact.Description = fields[4].Trim();
 
-            return artifacts;
+                        artifacts[count++] = artifact;
+                    }
+
+                    return artifacts;
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    
+                    Console.WriteLine("Access denied when trying to read the file.");
+                }
+                catch(IOException)
+                {
+                    Console.WriteLine("An Error occured while reading the file.");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid Encoded name format");
+                }
+                return new Artifact[0];
         }
 
         
@@ -213,10 +240,10 @@ namespace Space_Expedition
         //view
         static void ViewInventory(Artifact[] vault, int count)
         {
-            Console.WriteLine("\n--- Galactic Vault Inventory ---");
+            Console.WriteLine("Galactic Vault Inventory");
             for (int i = 0; i < count; i++)
             {
-                Console.WriteLine(vault[i].DecodedName + " | " + vault[i].Planet);
+                Console.WriteLine(vault[i].DecodedName + " | " + vault[i].Planet + " | " + vault[i].DiscoveryDate);
             }
         }
 
