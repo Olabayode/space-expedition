@@ -268,10 +268,13 @@ namespace Space_Expedition
                 }
                 File.WriteAllLines(filePath, lines);
             }
-            catch (System.Exception)
+            catch(UnauthorizedAccessException)
             {
-                
-                throw;
+                Console.WriteLine("Could not save expedition summary");
+            }
+            catch(IOException)
+            {
+                Console.WriteLine("Error occured while saving expedition summary");
             }
         }        
 
