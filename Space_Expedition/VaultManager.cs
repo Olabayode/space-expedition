@@ -185,7 +185,7 @@ namespace Space_Expedition
         static void AddArtifact(ref Artifact[] vault, ref int count)
         {
             Console.Write("Enter artifact file name: ");
-            string fileName = Console.ReadLine();
+            string fileName = Console.ReadLine().Trim();
 
             try
             {
