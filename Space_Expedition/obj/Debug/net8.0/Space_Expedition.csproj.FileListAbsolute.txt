@@ -1,0 +1,15 @@
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/bin/Debug/net8.0/Space_Expedition
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/bin/Debug/net8.0/Space_Expedition.deps.json
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/bin/Debug/net8.0/Space_Expedition.runtimeconfig.json
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/bin/Debug/net8.0/Space_Expedition.dll
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/bin/Debug/net8.0/Space_Expedition.pdb
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.AssemblyInfoInputs.cache
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.AssemblyInfo.cs
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.csproj.CoreCompileInputs.cache
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.sourcelink.json
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.dll
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/refint/Space_Expedition.dll
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.pdb
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/Space_Expedition.genruntimeconfig.cache
+/Users/emmanuelolu/backend/sd-290/assignments/Space_Expedition/Space_Expedition/obj/Debug/net8.0/ref/Space_Expedition.dll
