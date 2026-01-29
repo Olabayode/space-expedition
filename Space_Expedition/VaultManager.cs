@@ -15,11 +15,12 @@ namespace Space_Expedition
 
         static void ShowMenu()
         {
-            Console.WriteLine("Galactic Vault Menu");
+            Console.WriteLine("\nGALACTIC VAULT MENU\n");
             Console.WriteLine("1. Add Artifact");
             Console.WriteLine("2. View Inventory");
-            Console.WriteLine("3. Save and Exit");
-            Console.Write("Select from 1 - 3: ");
+            Console.WriteLine("3. Search Inventory");
+            Console.WriteLine("4. Save and Exit");
+            Console.Write("Select from 1 - 4: ");
         }
 
         public static void Run()
@@ -46,6 +47,10 @@ namespace Space_Expedition
                         break;
 
                     case "3":
+                        SearchInventory(vault, count);
+                        break;    
+
+                    case "4":
                         SaveVault("expedition_summary.txt", vault, count);
                         Console.WriteLine("Artifacts Saved");
                         running = false;
@@ -231,10 +236,13 @@ namespace Space_Expedition
                 {
                     InsertArtifact(ref vault, ref count, newArtifact);
                     Console.WriteLine("Artifact added successfully.");
+
+                    Console.WriteLine("View the Updated Galactic Vault Inventory below\n");
+                    ViewInventory(vault, count);
                 }
                 else
                 {
-                    Console.WriteLine("Artifact already exists.");
+                    Console.WriteLine("Artifact already exists.\n");
                 }
             }
             catch
@@ -250,6 +258,29 @@ namespace Space_Expedition
             for (int i = 0; i < count; i++)
             {
                 Console.WriteLine(vault[i].DecodedName + " | " + vault[i].Planet + " | " + vault[i].DiscoveryDate);
+            }
+        }
+
+        static void SearchInventory(Artifact[] vault, int count)
+        {
+            Console.Write("Enter artifact name to search (decoded): ");
+            string searchName = Console.ReadLine().Trim();
+
+            int index = BinarySearch(vault, count, searchName);
+
+            if (index != -1)
+            {
+                Artifact found = vault[index];
+                Console.WriteLine("\nArtifact Found:");
+                Console.WriteLine($"Name: {found.DecodedName}");
+                Console.WriteLine($"Planet: {found.Planet}");
+                Console.WriteLine($"Discovery Date: {found.DiscoveryDate}");
+                Console.WriteLine($"Storage Location: {found.StorageLocation}");
+                Console.WriteLine($"Description: {found.Description}\n");
+            }
+            else
+            {
+                Console.WriteLine("Artifact not found in the vault.\n");
             }
         }
 
