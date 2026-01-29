@@ -42,12 +42,13 @@ namespace Space_Expedition
                         break;
 
                     case "2":
-                        // ViewInventory(vault, count);
+                        ViewInventory(vault, count);
                         break;
 
                     case "3":
-                        // SaveVault("expedition_summary.txt", vault, count);
-                        // running = false;
+                        SaveVault("expedition_summary.txt", vault, count);
+                        Console.WriteLine("Artifacts Saved");
+                        running = false;
                         break;
 
                     default:
@@ -208,6 +209,30 @@ namespace Space_Expedition
                 Console.WriteLine("Error reading artifact file.");
             }
         }
+
+        //view
+        static void ViewInventory(Artifact[] vault, int count)
+        {
+            Console.WriteLine("\n--- Galactic Vault Inventory ---");
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(vault[i].DecodedName + " | " + vault[i].Planet);
+            }
+        }
+
+        static void SaveVault(string filePath,  Artifact[] artifacts, int count)
+        {
+            string[] lines = new string[count];
+            for(int i = 0; i < count; i++)
+            {
+                lines[i] = artifacts[i].EncodedName + ", " +
+                    artifacts[i].Planet + ", " +
+                    artifacts[i].DiscoveryDate + ", " +
+                    artifacts[i].StorageLocation + ", " +
+                    artifacts[i].Description;
+            }
+            File.WriteAllLines(filePath, lines);
+        }        
 
     }
 }
